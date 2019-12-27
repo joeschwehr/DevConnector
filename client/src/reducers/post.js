@@ -6,7 +6,8 @@ import {
     ADD_POST,
     GET_POST,
     ADD_COMMMENT,
-    REMOVE_COMMENT
+    REMOVE_COMMENT,
+    CLEAR_POST
 } from '../actions/types';
 
 const initialState = {
@@ -23,6 +24,8 @@ export default function(state = initialState, action) {
             return { ...state, posts: payload, loading: false };
         case GET_POST:
             return { ...state, post: payload, loading: false };
+        case CLEAR_POST:
+            return { ...state, post: null };
         case UPDATE_LIKES:
             const newPosts = state.posts.map(post => {
                 if (post._id === payload.id) {

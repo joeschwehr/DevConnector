@@ -11,7 +11,7 @@ const Profiles = ({ profile: { profiles, loading }, getProfiles }) => {
 
     return (
         <div>
-            {loading ? (
+            {loading && profiles === null ? (
                 <Spinner />
             ) : (
                 <>
@@ -21,10 +21,14 @@ const Profiles = ({ profile: { profiles, loading }, getProfiles }) => {
                         developers
                     </p>
                     <div className='profiles'>
-                        {profiles.length > 0 ? (
-                            profiles.map(profile => (
-                                <ProfileItem key={profile._id} profile={profile} />
-                            ))
+                        {profiles ? (
+                            profiles.length < 1 ? (
+                                <Spinner />
+                            ) : (
+                                profiles.map(profile => (
+                                    <ProfileItem key={profile._id} profile={profile} />
+                                ))
+                            )
                         ) : (
                             <h4>No Profiles Found</h4>
                         )}
