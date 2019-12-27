@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getProfileById } from '../../actions/profile';
+import { getProfileById, clearProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import ProfileTop from './ProfileTop';
@@ -9,12 +9,13 @@ import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
 import ProfileGithub from './ProfileGithub';
 
-const Profile = ({ match, profile: { profile, loading }, auth, getProfileById }) => {
+const Profile = ({ match, profile: { profile, loading }, auth, getProfileById, clearProfile }) => {
     useEffect(() => {
+        clearProfile();
         window.scrollTo(0, 0);
 
         getProfileById(match.params.id);
-    }, [getProfileById, match.params.id]);
+    }, [getProfileById, match.params.id, clearProfile]);
 
     return (
         <div>
@@ -55,4 +56,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { getProfileById })(Profile);
+export default connect(mapStateToProps, { getProfileById, clearProfile })(Profile);

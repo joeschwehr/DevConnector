@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 import { updateProfile, getCurrentProfile } from '../../actions/profile';
 
 const EditProfile = ({
@@ -45,7 +45,7 @@ const EditProfile = ({
                 instagram: loading || !profile.social ? '' : profile.social.instagram
             });
         }
-    }, []);
+    }, [getCurrentProfile]);
 
     const {
         company,

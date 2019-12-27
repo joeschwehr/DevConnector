@@ -12,8 +12,6 @@ import {
 
 // GET CURRENT USER PROFILE
 export const getCurrentProfile = () => async dispatch => {
-    dispatch({ type: CLEAR_PROFILE });
-
     try {
         const res = await axios.get('/api/profile/me');
         dispatch({
@@ -26,6 +24,13 @@ export const getCurrentProfile = () => async dispatch => {
             payload: { msg: error.response.statusText, status: error.response.status }
         });
     }
+};
+
+// CLEAR PROFILE
+export const clearProfile = () => async dispatch => {
+    dispatch({
+        type: CLEAR_PROFILE
+    });
 };
 
 // GET ALL PROFILES
@@ -94,9 +99,7 @@ export const updateProfile = (formData, history, edit = false) => async dispatch
         });
         dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
 
-        if (!edit) {
-            history.push('/dashboard');
-        }
+        history.push('/dashboard');
     } catch (err) {
         const errors = err.response.data.errors;
 
