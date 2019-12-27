@@ -10,7 +10,6 @@ const PostForm = ({ addPost }) => {
     };
 
     const handleSubmit = async e => {
-        e.preventDefault();
         await addPost(formText);
         setFormText('');
     };
