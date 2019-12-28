@@ -1,6 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://joe:joe123@devconnector-wsti5.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken_rustyIsCool",
-    "githubClientId": "d11fd10c382c2cd51740",
-    "githubSecret": "bc4e424c2aeb29fa9687267d1bde2acb91e214b1"
-}
